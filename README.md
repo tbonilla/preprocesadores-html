@@ -1,5 +1,7 @@
 # Twig
 
+*Twig* es un motor de creación de plantillas para utilizar con PHP
+
 ### Requisitos previos
 *Twig* necesita por lo menos **PHP 5.2.4** para funcionar.
 
@@ -53,6 +55,167 @@ extension=twig.so
 ```
 Y a partir de ahora, *Twig* compilará automáticamente tus plantillas para tomar ventaja de la extensión C. Ten en cuenta que esta extensión no sustituye el código *PHP*, solamente proporciona una versión optimizada del método ```Twig_Template::getAttribute()```.
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ### Uso básico de la *API*
 
 Esta sección te ofrece una breve introducción a la *API PHP* de *Twig*.
@@ -85,3 +248,16 @@ require_once '/path/to/lib/Twig/Autoloader.php';
 Twig_Autoloader::register();
 ```
 Sustituye /path/to/lib/ con la ruta que utilizaste en la instalación de *Twig*.
+
+[Aquí](http://gitnacho.github.io/Twig/api.html) puedes encontrar más información sobre el API para *Twig*.
+
+### Referencias
+
+* [Página oficial de Twig](http://twig.sensiolabs.org/)
+* [Documentación de Twig en español](http://gitnacho.github.io/Twig/index.html)
+* [Plantillas](http://librosweb.es/libro/symfony_2_x/capitulo_7/plantillas.html)
+
+### Ejemplo
+
+* [Twig, plantillas para PHP Parte I](http://jhernandz.es/noticia/twig-plantillas-php-i)
+* [Twig, plantillas para PHP Parte II](http://jhernandz.es/noticia/twig-plantillas-php-ii)
