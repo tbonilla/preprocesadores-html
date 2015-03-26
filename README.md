@@ -152,3 +152,58 @@ En cuanto a los analizadores léxico y sintáctico, el compilador predeterminado
 ```
 $twig->setCompiler($compilador);
 ```
+
+### Plantillas 
+
+Son muy concisas y fáciles de leer, por lo que además son fáciles de entender por parte de los diseñadores web. Observa el mismo ejemplo anterior definido como plantilla Twig:
+```
+<!DOCTYPE html>
+    <html>
+        <head>
+        <title>¡Bienvenido a Symfony!</title>
+        </head>
+        <body>
+        <h1>{{ page_title }}</h1>
+ 
+        <ul id="navigation">
+            {% for item in navigation %}
+                <li><a href="{{ item.href }}">{{ item.caption }}</a></li>
+            {% endfor %}
+        </ul>
+    </body>
+</html>
+```
+La sintaxis de Twig se basa en dos etiquetas especiales:
+* `{{ ... }}`: sirve para mostrar el contenido de una variable o el resultado de realizar alguna operación o procesar alguna expresión. En PHP la construcción equivalente es `echo` o `print`.
+* `{% ... %}`: sirve para definir la lógica de la plantilla, es decir, la parte de programación que controla cómo se muestran los contenidos de la plantilla. Entre otros, esta etiqueta se emplea para las instrucciones `if` y para los bucles `for`.
+
+**Nota:**
+Twig define una tercera etiqueta para crear comentarios: `{# esto es un comentario #}`. Su sintaxis es equivalente a la de PHP (`/* comentario */`) por lo que puedes utilizarla para crear comentarios de varias líneas.
+
+Twig también define **filtros** y **etiquetas**, que modifican los contenidos antes de mostrarlos. El siguiente ejemplo convierte a mayúsculas la variable title antes de mostrarla:
+```
+{{ title|upper }}
+```
+También incluye varias funciones e incluso te permite definir tus propias funciones. En el siguiente ejemplo, la etiqueta `for` utiliza la función `cycle` para imprimir diez etiquetas `<div>` cuyas clases CSS alternan entre los valores `par` e `impar`:
+```
+{% for i in 0..10 %}
+    <div class="{{ cycle(['odd', 'even'], i) }}">
+        {# ... #}
+    </div>
+{% endfor %}
+```
+
+### ¿Por qué Twig?
+
+Las plantillas Twig están pensadas para que sean sencillas y por eso no permiten incluir código PHP. Esta limitación se ha añadido a propósito, ya que las plantillas sólo deberían encargarse de mostrar información, no de programar parte de la aplicación.
+
+Twig también es capaz de hacer cosas que PHP no puede, como controlar los espacios en blanco generados por el código, renderizar las plantillas dentro de un entorno de ejecución seguro y controlado (llamado *sandbox*) y la aplicación automática del mecanismo de escape. Twig incluye muchas pequeñas funcionalidades que facilitan la creación de plantillas muy concisas. Considera por ejemplo el siguiente ejemplo, que combina un bucle `for` con una condición `if`:
+```
+   <ul>
+      {% for user in users if user.active %}
+          <li>{{ user.username }}</li>
+      {% else %}
+          <li>No existe ningún usuario.</li>
+      {% endfor %}
+  </ul>
+```
