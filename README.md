@@ -3,7 +3,7 @@
 ### Requisitos previos
 *Twig* necesita por lo menos **PHP 5.2.4** para funcionar.
 
-### Instalar vía Composer (recomendado)
+### Instalando vía Composer (recomendado)
 
 1. Instala [Composer](https://getcomposer.org/download/) en tu proyecto:
 ```
@@ -57,27 +57,29 @@ Y a partir de ahora, *Twig* compilará automáticamente tus plantillas para toma
 
 Esta sección te ofrece una breve introducción a la *API PHP* de *Twig*.
 ```
-require_once '/ruta/a/vendor/autoload.php';
+require_once '/path/to/vendor/autoload.php';
 
-$loader = new Twig_Loader_String();
+$loader = new Twig_Loader_Array(array(
+    'index' => 'Hello {{ name }}!',
+));
 $twig = new Twig_Environment($loader);
 
-echo $twig->render('Hello {{ name }}!', array('name' => 'Fabien'));
+echo $twig->render('index', array('name' => 'Fabien'));
 ```
-*Twig* utiliza un cargador (```Twig_Loader_String```) para buscar las plantillas, y un entorno (```Twig_Environment```) para almacenar la configuración.
+*Twig* utiliza un cargador (```Twig_Loader_Array```) para buscar las plantillas, y un entorno (```Twig_Environment```) para almacenar la configuración.
 
 El método ```render()``` carga la plantilla pasada como primer argumento y la reproduce con las variables pasadas como segundo argumento.
 
 Debido a que las plantillas generalmente se guardan en el sistema de archivos, *Twig* también viene con un cargador del sistema de archivos:
 ```
-$loader = new Twig_Loader_Filesystem('/ruta/a/templates');
+$loader = new Twig_Loader_Filesystem('/path/to/templates');
 $twig = new Twig_Environment($loader, array(
-    'cache' => '/ruta/a/compilation_cache',
+    'cache' => '/path/to/compilation_cache',
 ));
 
 echo $twig->render('index.html', array('name' => 'Fabien'));
 ```
-Si no estás usando ```Composer```, usa el cargador automático de *Twig*:
+**Nota:** Si no estás usando ```Composer```, usa el cargador automático de *Twig*:
 ```
 require_once '/path/to/lib/Twig/Autoloader.php';
 Twig_Autoloader::register();
